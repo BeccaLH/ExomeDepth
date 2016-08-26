@@ -8,7 +8,9 @@ Date modified: 25/08/2016
 ExomeDepth uses depth count data across regions of interest (windows) taken from a bed file. The TSC bed file ROIs are whole exons, some of which are very large (eg BRCA1 exon 11). Advice from Andrew Parrish (AP, Exeter lab) is that 120bp windows give best results. Python script provided by AP was used to subdivide the TSC bed file. File is called `panel_CNV_120bp.bed`. 
 
 To generate this file:
-`python cnv_bed_files.py trusight_cancer_manifest_a.bed`
+```
+$ python cnv_bed_files.py trusight_cancer_manifest_a.bed
+```
 
 **bed file name**: `panel_CNV_120bp.bed`
 
@@ -28,7 +30,9 @@ Details of samples used recorded in `Controls_ExomeDepth_Validation.xls` in my H
 ### Preparing the control bam files
 
 All control samples were identified and copied to the folder `/home/rebecce/ExomeDepth/Control_Validation_Data` using:
-`cp /path/to/file/on/SeqPilot /home/rebecce/ExomeDepth/Control_Validation_Data`
+```
+cp /path/to/file/on/SeqPilot /home/rebecce/ExomeDepth/Control_Validation_Data
+```
 
 ExomeDepth requires bam files to be indexed. Used samtools to index them (generate .bai files)
 `samtools index Filename.bam`
