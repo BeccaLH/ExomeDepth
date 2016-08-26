@@ -1,18 +1,22 @@
-# ExomeDepth development readme
+# ExomeDepth for TruSight Cancer CNV calling development readme
 
-Author: Rebecca Haines
+Author: Rebecca Haines (rebecca.haines@nuh.nhs.uk)
+
 Date modified: 26/08/2016
 
-##### Software versions used
+#### Software versions used
 
 Development work using R was performed using R Studio. Python scripts were run from the command line after modification using the Canopy Python IDE.
 
-|         |Version   |
-|---------|:--------:|
-|RStudio  |0.99.903  |
-|R        |3.3.1     |
-|python   |2.7.9     |
-|Canopy   |1.5.5.3123|
+|          |Version   |
+|----------|:--------:|
+|RStudio   |0.99.903  |
+|R         |3.3.1     |
+|python    |2.7.9     |
+|Canopy    |1.5.5.3123|
+|ExomeDepth|1.1.10    |
+
+ExomeDepth is published by Plagnol et al (2012, Bioinformatics 28:2747-2554 [DOI:10.1093/bioinformatics/bts526](http://bioinformatics.oxfordjournals.org/content/28/21/2747.long))
 
 ## Preparing the bed file
 
@@ -57,7 +61,9 @@ cp /path/to/file/on/SeqPilot /home/rebecce/ExomeDepth/Control_Validation_Data
 ```
 
 ExomeDepth requires bam files to be indexed. Used samtools to index them (generate .bai files)
-`samtools index Filename.bam`
+```
+samtools index filename.bam
+```
 
 #### Running ExomeDepth to get depth count data for all regions of interest in negative controls
 
