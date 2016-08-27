@@ -1,15 +1,15 @@
 ### Author: Rebecca Haines
 ### Date: 27/08/2016
-### for calling variants using the BRCA -ve control set
+### for calling variants using the other (non-BRCA) -ve control set
 
 library("ExomeDepth")
 library("GenomicRanges")
 
-load("/home/rebecca/ExomeDepth/ctrl_counts_BRCA.RData")
+load("/home/rebecca/ExomeDepth/ctrl_counts.RData")
 
-output_folder <- '/home/rebecca/ExomeDepth/Control_Validation_Data/FemalePos/BRCA_varcalls/'
+output_folder <- '/home/rebecca/ExomeDepth/Control_Validation_Data/FemalePos/other_varcalls/'
 setwd(output_folder)
-bams_folder <- '/home/rebecca/ExomeDepth/Control_Validation_Data/FemalePos/bam_files_BRCA/'
+bams_folder <- '/home/rebecca/ExomeDepth/Control_Validation_Data/FemalePos/bam_files_other/'
 
 bed <- "/home/rebecca/ExomeDepth/TSC_CNV_120bp.bed"
 reference.fasta <- '/home/rebecca/ReferenceGenome/hg19.fasta'

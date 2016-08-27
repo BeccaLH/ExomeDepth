@@ -3,7 +3,7 @@ library("GenomicRanges")
                             
 Alignment_folder <- '/home/rebecca/ExomeDepth/Control_Validation_Data/FemaleCtrl'
 setwd(Alignment_folder)
-bed <- '/home/rebecca/ExomeDepth/panel_CNV_120bp.bed'
+bed <- '/home/rebecca/ExomeDepth/TSC_CNV_120bp.bed'
 reference.fasta <- '/home/rebecca/ReferenceGenome/hg19.fasta'
 
 panel.version <- "TSC"
@@ -26,7 +26,7 @@ ExomeCount.dafr$chromosome <- gsub(as.character(ExomeCount.dafr$space),pattern =
 # Create matrix
 FemaleExomeCount.mat <- as.matrix(ExomeCount.dafr[, grep(names(ExomeCount.dafr), pattern = '*.bam')])
 
-dir.base <- sprintf("/home/rebecca/ExomeDepth/Control_Validation_Data/FemaleCount/BRCA_ctrl")	
+dir.base <- sprintf("/home/rebecca/ExomeDepth/Control_Validation_Data/")	
 dir.output <- file.path(dir.base)	
 dir.create(dir.output)
-save.image( sprintf("%s/female_exome_depth_count.RData", dir.output) )
+save.image( sprintf("%s/female_ExomeDepth_ctrl_count.RData", dir.output) )
