@@ -94,3 +94,7 @@ An annotation file was generated containing the names of TruSight Cancer regions
 
 Graphs showing results (reads ratio) for the *BRCA1* and *BRCA2* genes are generated for each sample and saved as jpegs in the same folder as the .csv output file.
 
+## Filtering the output files for only genes of interest
+
+Python script `ExomeDepth_csv_gene_filter_v1.py` written to filter ExomeDepth output .csv files to include only genes of interest for that sample. 
+
