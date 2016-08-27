@@ -1,3 +1,13 @@
+### cnv_bed_files.py
+### Author: Andrew Parrish (andrew.parrish@nhs.net)
+### modifications by Rebecca Haines (rebecca.haines@nuh.nhs.uk)
+### Date last modified: 2016/08/27
+###
+### To subdivide a bed file into standard window sizes for use in cnv calling 
+### with the R package ExomeDepth.
+###
+### Use: python cnv_bed_files.py input_bedfile_name window_size
+
 import csv, argparse, os
 
 parser = argparse.ArgumentParser()
@@ -11,7 +21,7 @@ window_size = args.window_size
 class Bed_file:
 
     def __init__(self,name,chrom,start,end):
-	    self.chrom = chrom
+	self.chrom = chrom
         self.start = start
         self.end = end
         self.name = name
@@ -20,10 +30,12 @@ class Bed_file:
         start = int(start)
         end = int(end)
         window_size = int(window_size)
-        # If interval is equal or smaller than two windows move to middle of interval and take off one window length for start coordinate
+        # If interval is equal or smaller than two windows move to middle of 
+        # interval and take off one window length for start coordinate
         if (end - start) <= (window_size * 2):
             self.newstart = (start + (end - start)/2) - window_size
-        # Otherwise, put a window over midpoint of interval, and remove window lengths until windows overlaps interval
+        # Otherwise, put a window over midpoint of interval, and remove window 
+        # lengths until windows overlaps interval
         else:
             mid = (start + (end - start)/2)- (window_size / 2)
 	    while mid > (start - (window_size / 2)):
@@ -34,10 +46,12 @@ class Bed_file:
         start = int(start)
         end = int(end)
         window_size = int(window_size)
-        # If interval is equal or smaller than two windows move to middle of interval and add on one window length for end coordinate
+        # If interval is equal or smaller than two windows move to middle of 
+        # interval and add on one window length for end coordinate
         if (end - start) <= (window_size * 2):
             self.newend = (start + (end - start)/2) + window_size
-        # Otherwise, put a window over midpoint of interval, and add window lengths until windows overlaps interval
+        # Otherwise, put a window over midpoint of interval, and add window 
+        # lengths until windows overlaps interval
         else:
             mid = (start + (end - start)/2)- (window_size / 2)
 	    while mid < (end + (window_size / 2)):
@@ -63,7 +77,7 @@ with open('bed_out.bed', 'wb') as outfile:
         csvwriter.writerow(out_row)
 
 # Use bedtools to divide new intervals into desired size and produce final file
-command = "bedtools makewindows -b bed_out.bed -w %s -i src > panel_CNV_%sbp.bed" %(window_size, window_size)
+command = "bedtools makewindows -b bed_out.bed -w %s -i src > TSC_CNV_%sbp.bed" %(window_size, window_size)
 os.system(command)
 
 
