@@ -2,7 +2,9 @@
 
 Author: Rebecca Haines (rebecca.haines@nuh.nhs.uk)
 
-Date modified: 26/08/2016
+Date modified: 29/08/2016
+
+Description of the development work performed for ExomeDepth calling. 
 
 #### Software versions used
 
@@ -98,3 +100,11 @@ Graphs showing results (reads ratio) for the *BRCA1* and *BRCA2* genes are gener
 
 Python script `ExomeDepth_csv_gene_filter_v1.py` written to filter ExomeDepth output .csv files to include only genes of interest for that sample. 
 
+## Automating the workflow
+
+Bash script `ExomeDepth_BRCA.sh` written to automate variant calling and filtering of the variants and generate audit log. File is executable so CNV calling can be performed using:
+```
+nohup ./ExomeDepth_BRCA.sh > logfile.txt
+```
+
+The name of the output logfile.txt can be changed to any appropriate file name. Nohup is used to ensure the execution of the script will complete even if the computer is logged off.
