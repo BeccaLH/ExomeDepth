@@ -98,7 +98,7 @@ Graphs showing results (reads ratio) for the *BRCA1* and *BRCA2* genes are gener
 
 ## Filtering the output files for only genes of interest
 
-Python script `ExomeDepth_csv_gene_filter_v1.py` written to filter ExomeDepth output .csv files to include only genes of interest for that sample. 
+Python script `ExomeDepth_csv_gene_filter_v1.py` written to filter ExomeDepth output .csv files to include only genes of interest for that sample. The script takes two arguments: /path/to/csvfiles and gene_name
 
 ## Automating the workflow
 
