@@ -5,6 +5,9 @@
 library("ExomeDepth")
 library("GenomicRanges")
 
+package_versions <- sessionInfo()
+print(package_versions)
+
 load("/home/rebecca/ExomeDepth/ctrl_counts_BRCA.RData")
 
 output_folder <- '/home/rebecca/ExomeDepth/Control_Validation_Data/FemalePos/BRCA_varcalls/'
@@ -27,6 +30,7 @@ bais.positive <- list.files(path = bams_folder, pattern = "ExD_Pos_F.*\\.bam.bai
 bams.selected <- c(bams.positive)
 bais.selected <- c(bais.positive)
 # Create counts dataframe for all BAMs
+print("Samples identified for CNV calling:")
 my.counts <- getBamCounts(bed.file = bed, bam.files = bams.selected, index.files = bais.selected, min.mapq = 20, include.chr = FALSE, referenceFasta = reference.fasta)
 ExomeCount.dafr <- as(my.counts[, colnames(my.counts)], 'data.frame')
 ExomeCount.dafr$chromosome <- gsub(as.character(ExomeCount.dafr$space),pattern = 'chr',replacement = '')
@@ -38,11 +42,15 @@ samplenames <- colnames(ExomeCount.mat)
 for (i in 1:nsamples) {
   samplename <- samplenames[i]
   print(samplename)
+  print("Generating CNV calls")
   my.choice <- select.reference.set(test.counts = ExomeCount.mat[,i],
                                     reference.counts = FemaleExomeCount.mat[,-i],
                                     bin.length = (ExomeCount.dafr$end - ExomeCount.dafr$start)/1000,
                                     n.bins.reduced = 10000)
-
+  
+  print("Reference files chosen:")
+  print(my.choice$reference.choice)
+  
   my.reference.selected <- apply(X = FemaleExomeCount.mat[, my.choice$reference.choice], drop = FALSE,
                                  MAR = 1,
                                  FUN = sum)
@@ -87,13 +95,14 @@ for (i in 1:nsamples) {
   
  ### Handle samples with no CNV calls- do not annotate them, direct them to the output file 
   if (length(all.exons@CNV.calls) == 0) {
-    print("no calls")
+    print("No variant calls")
     output.file <- paste(samplename, "CNVcalls_120window_BRCA_Annotation.csv", sep = "")
     write.csv(file = output.file, x = all.exons@CNV.calls, row.names = FALSE)
   }
   ### annotate calls with the BRCA exons annotation file
   else {
   ####annotate with TSC bed
+  print("Variants identified.")
   all.exons <- AnnotateExtra(x = all.exons,
                              reference.annotation = AnnotationFilter.GRanges,
                              min.overlap = 0.01,
@@ -103,3 +112,5 @@ for (i in 1:nsamples) {
   write.csv(file = output.file, x = all.exons@CNV.calls, row.names = FALSE)
   }
 }
+
+print("CNV calling complete.")

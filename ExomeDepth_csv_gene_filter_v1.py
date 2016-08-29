@@ -3,8 +3,7 @@
 ### Date: 2016/08/27
 ### Version: v1
 ###
-### 
-
+### use: python ExomeDepth_csv_gene_filter.py /path/to/csvfiles genename
 
 import csv
 import sys
@@ -38,5 +37,5 @@ def csv_filter_gene(input_csv, gene_name):
 
 # loop over all .csv files
 for infile in glob.glob(os.path.join(path, '*Annotation.csv')):
-    print "current file is: " + infile
+    print "Generating annotations for: " + infile
     csv_filter_gene(infile,sys.argv[2])
