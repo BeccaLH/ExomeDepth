@@ -57,9 +57,9 @@ Samples were selected from the Cancer active list and samples identified by LPD 
 
 #### Preparing the control bam files
 
-All control samples were identified and copied to the folder `/home/rebecce/ExomeDepth/Control_Validation_Data` using:
+All control samples were identified and copied to the folder `/home/rebecca/ExomeDepth/Control_Validation_Data` using:
 ```
-cp /path/to/file/on/SeqPilot /home/rebecce/ExomeDepth/Control_Validation_Data
+cp /path/to/file/on/SeqPilot /home/rebecca/ExomeDepth/Control_Validation_Data
 ```
 
 ExomeDepth requires bam files to be indexed. Used samtools to index them (generate .bai files)
