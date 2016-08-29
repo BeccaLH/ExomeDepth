@@ -84,7 +84,7 @@ Details of positive control samples used are recorded in `Controls_ExomeDepth_Va
 
 #### CNV calling
 
-Uses the `panel_CNV_120bp.bed` file (with 120bp windows for CNV calling) and the coverage depth count results in `TSC_controls.RData`. Depth count data is generated for all of the samples. GC content is taken in to account (ExomeDepth does this when the reference genome fasta is supplied. CNVs are then called on all samples.
+Uses the `TSC_CNV_120bp.bed` file (with 120bp windows for CNV calling) and the coverage depth count results in `TSC_controls.RData`. Depth count data is generated for all of the samples. GC content is taken in to account (ExomeDepth does this when the reference genome fasta is supplied. CNVs are then called on all samples.
 
 The results are written to a .csv file that contains details of the region (using genomic coordinates), the Bayes Factor (statistical support for each CNV), and the reads ratio. The reads ratio can be interpreted in a similar way to MLPA dosage quotient scores, i.e. a score ~1 means no change, ~0.5 means a heterozygous deletion and ~1.5 is a heterozygous duplication.
 

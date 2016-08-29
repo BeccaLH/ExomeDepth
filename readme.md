@@ -41,6 +41,10 @@ Known BRCA1/2 negative control samples (Samples that have been sequenced on TruS
 
 Read count data generated using R script `TSC_female_v1.r` and saved as R data object `ctrl_counts_BRCA.RData`.
 
+#### bed file
+
+`TSC_CNV_120bp.bed` file (with 120bp windows for CNV calling). Generated from the TruSight Cancer manifest file using the python script `cnv_bed_files.py` provided by Andrew Parrish (see `Development/readme.md` for futher information).
+
 #### BRCA reference sequences
 
 *BRCA1* ref seq: NM_007294
